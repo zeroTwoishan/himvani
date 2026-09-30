@@ -1,0 +1,21 @@
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Content-Length: 60
+Connection: keep-alive
+Date: Wed, 30 Sep 2026 06:39:26 GMT
+Server: ServerTokens ProductOnly
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+Access-Control-Allow-Origin: *
+X-XSS-Protection: 1; mode=block
+CMR-Request-Id: 0dae233a-cf32-4224-aec4-3bc5d6638b5b
+Content-SHA1: 0150f0a73cca03e515fea97af462887370451b18
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Request-Id: wv0cojhhyNa1ISMdIBB4C0_sisTYsuQWrY16_ArOOQMhCsetB_2p5A==
+Content-MD5: 10a0f80995751a35c33e80bb1c2c799f
+X-Cache: Error from cloudfront
+Via: 1.1 bd3f8a07a0dda8b80498a0b92378cd90.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P3
+X-Amz-Cf-Id: wv0cojhhyNa1ISMdIBB4C0_sisTYsuQWrY16_ArOOQMhCsetB_2p5A==
+

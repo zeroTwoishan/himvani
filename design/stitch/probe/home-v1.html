@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HIMVANI — Polar Knowledge Portal | NCPOR</title>
+<!-- Google Fonts: Anek Latin & Noto Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "sea-ice": "#EEF3F6",
+            "polar-night": "#0F2436",
+            "glacier": "#5B8BA8",
+            "expedition-orange": "#E4572E",
+            "institutional-border": "#D3DEE6"
+          },
+          fontFamily: {
+            heading: ["Anek Latin", "sans-serif"],
+            body: ["Noto Sans", "sans-serif"],
+            code: ["JetBrains Mono", "monospace"]
+          },
+          borderRadius: {
+            sm: "6px",
+            card: "12px"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      background-color: #EEF3F6;
+      color: #0F2436;
+      font-family: 'Noto Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-sea-ice text-polar-night min-h-screen flex flex-col antialiased selection:bg-glacier/20 selection:text-polar-night">
+<!-- 1. Thin Accessibility & Utility Bar -->
+<aside aria-label="Accessibility &amp; Tools" class="w-full bg-[#FFFFFF] border-b border-[#D3DEE6]">
+<div class="max-w-[1360px] mx-auto px-6 py-1.5 flex items-center justify-between text-xs text-[#0F2436]/80">
+<!-- Left side: Skip link & Text resize -->
+<div class="flex items-center gap-6">
+<a class="text-[#0F2436] hover:text-[#5B8BA8] underline underline-offset-4 focus:outline-none" href="#main-content">
+          Skip to main content
+        </a>
+<div class="h-3.5 w-px bg-[#D3DEE6] hidden sm:block"></div>
+<div class="hidden sm:flex items-center gap-2">
+<span class="text-[#0F2436]/70">Text size:</span>
+<button class="px-1.5 py-0.5 rounded hover:bg-[#EEF3F6] text-[#0F2436] transition-colors" title="Decrease font size" type="button">A-</button>
+<button class="px-1.5 py-0.5 rounded font-semibold text-[#0F2436] hover:bg-[#EEF3F6] transition-colors" title="Default font size" type="button">A</button>
+<button class="px-1.5 py-0.5 rounded hover:bg-[#EEF3F6] text-[#0F2436] transition-colors" title="Increase font size" type="button">A+</button>
+</div>
+<div class="h-3.5 w-px bg-[#D3DEE6] hidden sm:block"></div>
+<button class="hidden sm:flex items-center gap-1.5 hover:text-[#5B8BA8] text-[#0F2436]/80 transition-colors" title="Toggle high contrast" type="button">
+<span class="material-symbols-outlined text-base">contrast</span>
+<span>Contrast</span>
+</button>
+</div>
+<!-- Right side: Language selector & Scientist link -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-[#5B8BA8]">language</span>
+<span class="font-medium text-[#0F2436]">English</span>
+<span class="text-[#D3DEE6]">/</span>
+<button class="text-[#0F2436] hover:text-[#5B8BA8] transition-colors" type="button">
+            हिन्दी
+          </button>
+</div>
+<div class="h-3.5 w-px bg-[#D3DEE6]"></div>
+<a class="flex items-center gap-1.5 text-[#0F2436] hover:text-[#5B8BA8] font-medium transition-colors" href="#signin">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Sign in for scientists</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- 2. Header / Top Navigation Bar -->
+<header class="w-full bg-[#FFFFFF] sticky top-0 z-50 border-b border-[#D3DEE6]">
+<div class="max-w-[1360px] mx-auto px-6 py-3.5 flex items-center justify-between">
+<!-- HIMVANI wordmark & Subtitle -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-[6px] bg-[#0F2436] flex items-center justify-center text-white shrink-0">
+<svg class="w-6 h-6 text-[#5B8BA8]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+<path d="M12 7v8M8 11h8M9.5 8.5l5 5M14.5 8.5l-5 5" stroke="#FFFFFF"></path>
+</svg>
+</div>
+<div>
+<a class="flex items-center gap-2" href="#">
+<span class="font-heading text-2xl font-bold tracking-tight text-[#0F2436]">HIMVANI</span>
+</a>
+<p class="text-[11px] leading-tight text-[#0F2436]/70">
+            National Centre for Polar and Ocean Research | Ministry of Earth Sciences
+          </p>
+</div>
+</div>
+<!-- Navigation Links (Sentence case strictly) -->
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+<a class="border-b-2 border-[#5B8BA8] text-[#0F2436] font-semibold pb-1" href="#ask">
+          Ask
+        </a>
+<a class="text-[#0F2436]/80 hover:text-[#0F2436] transition-colors pb-1" href="#explore">
+          Explore
+        </a>
+<a class="text-[#0F2436]/80 hover:text-[#0F2436] transition-colors pb-1" href="#archive">
+          Archive
+        </a>
+<a class="text-[#0F2436]/80 hover:text-[#0F2436] transition-colors pb-1" href="#expeditions">
+          Expeditions
+        </a>
+<a class="text-[#0F2436]/80 hover:text-[#0F2436] transition-colors pb-1" href="#for-schools">
+          For schools
+        </a>
+</nav>
+<!-- Search Trigger & Portal CTA -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3 py-1.5 border border-[#D3DEE6] rounded-[6px] text-xs text-[#0F2436]/70 bg-[#EEF3F6] hover:bg-[#EEF3F6]/70 transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">search</span>
+<span class="hidden sm:inline">Search archive...</span>
+<kbd class="hidden sm:inline-block font-code text-[10px] bg-[#FFFFFF] px-1 py-0.2 rounded border border-[#D3DEE6]">⌘K</kbd>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-[1360px] mx-auto px-6 py-8 flex flex-col gap-10" id="main-content">
+<!-- 3. Hero Split Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-2">
+<!-- Left side (col-span-7) -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<!-- Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-[#FFFFFF] border border-[#D3DEE6] rounded-[6px]">
+<span class="w-2 h-2 rounded-full bg-[#E4572E]"></span>
+<span class="text-xs font-medium text-[#0F2436]/80">Polar science knowledge portal</span>
+</div>
+<!-- Headline in Anek Latin condensed semibold (44-48px) -->
+<h1 class="font-heading text-4xl lg:text-[46px] lg:leading-[52px] font-semibold text-[#0F2436] tracking-tight">
+            Ask anything about India in Antarctica and the Arctic.
+          </h1>
+<!-- Subtext in Noto Sans with slight opacity -->
+<p class="text-base lg:text-lg text-[#0F2436]/80 leading-relaxed max-w-2xl font-body">
+            Answers come only from 44 expeditions of reports, photos and data. Every sentence links to its source.
+          </p>
+</div>
+<!-- Large Ask Input Panel (White, rounded-[6px], border 1px #D3DEE6, p-2) -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[6px] p-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-[#5B8BA8] text-2xl ml-2">translate</span>
+<input aria-label="Ask questions about polar expeditions" class="flex-1 bg-transparent border-0 focus:ring-0 text-[#0F2436] placeholder:text-[#0F2436]/50 text-base font-body focus:outline-none" placeholder="मैत्री स्टेशन पर सर्दियों में कितना तापमान होता है?" type="text"/>
+<button class="p-2 text-[#0F2436]/60 hover:text-[#0F2436] rounded-[6px] hover:bg-[#EEF3F6] transition-colors" title="Ask with voice" type="button">
+<span class="material-symbols-outlined text-xl">mic</span>
+</button>
+<button class="bg-[#E4572E] hover:bg-[#CE451D] text-white px-5 py-2.5 rounded-[6px] font-medium text-sm flex items-center gap-2 shrink-0 transition-colors" type="button">
+<span>Ask</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+<!-- Multilingual Chips & Source citation trust line -->
+<div class="space-y-3 pt-1">
+<span class="text-xs text-[#0F2436]/70 font-medium block">
+            Try asking in your language:
+          </span>
+<div class="flex flex-wrap gap-2.5">
+<!-- Tamil Chip -->
+<button class="bg-[#FFFFFF] border border-[#D3DEE6] hover:border-[#5B8BA8] text-xs text-[#0F2436] px-3 py-1.5 rounded-[6px] font-medium text-left transition-colors flex items-center gap-1.5" type="button">
+<span class="text-[11px] font-semibold text-[#5B8BA8]">TA</span>
+<span>அண்டார்டிகாவில் இந்தியா என்ன ஆராய்ச்சி செய்கிறது?</span>
+</button>
+<!-- English Chip -->
+<button class="bg-[#FFFFFF] border border-[#D3DEE6] hover:border-[#5B8BA8] text-xs text-[#0F2436] px-3 py-1.5 rounded-[6px] font-medium text-left transition-colors flex items-center gap-1.5" type="button">
+<span class="text-[11px] font-semibold text-[#5B8BA8]">EN</span>
+<span>Why is Bharati station built from shipping containers?</span>
+</button>
+<!-- Bangla Chip -->
+<button class="bg-[#FFFFFF] border border-[#D3DEE6] hover:border-[#5B8BA8] text-xs text-[#0F2436] px-3 py-1.5 rounded-[6px] font-medium text-left transition-colors flex items-center gap-1.5" type="button">
+<span class="text-[11px] font-semibold text-[#5B8BA8]">BN</span>
+<span>হিমাদ্রি স্টেশন কোথায়?</span>
+</button>
+</div>
+<!-- Trust line -->
+<div class="flex items-center gap-2 pt-1 text-xs text-[#0F2436]/70">
+<span class="material-symbols-outlined text-sm text-[#E4572E]">verified</span>
+<span>Every answer links directly to verified expedition diaries and peer-reviewed NCPOR records.</span>
+</div>
+</div>
+</div>
+<!-- Right side: Dark Polar-Stereographic Map of Antarctica (col-span-5) -->
+<div class="lg:col-span-5">
+<div class="bg-[#0F2436] text-[#EEF3F6] border border-[#D3DEE6] rounded-[12px] p-5 h-full flex flex-col justify-between">
+<!-- Header metadata -->
+<div class="flex items-center justify-between pb-3 border-b border-[#5B8BA8]/30">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#E4572E]"></span>
+<span class="text-xs font-semibold text-[#EEF3F6] tracking-wide font-code">South polar stereographic</span>
+</div>
+<span class="text-[11px] font-code text-[#5B8BA8]">EPSG:3031</span>
+</div>
+<!-- Map Visualization Area -->
+<div class="relative w-full aspect-square my-3 flex items-center justify-center">
+<div class="relative w-full h-full max-w-[340px] max-h-[340px] rounded-full bg-[#0F2436] border border-[#5B8BA8]/40 overflow-hidden flex items-center justify-center">
+<!-- Latitude rings -->
+<div class="absolute inset-5 rounded-full border border-[#5B8BA8]/30 pointer-events-none"></div>
+<div class="absolute inset-16 rounded-full border border-[#5B8BA8]/35 pointer-events-none"></div>
+<div class="absolute inset-28 rounded-full border border-[#5B8BA8]/45 pointer-events-none"></div>
+<!-- Meridian crosshairs -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-full h-px bg-[#5B8BA8]/25"></div>
+<div class="h-full w-px bg-[#5B8BA8]/25 absolute"></div>
+</div>
+<!-- Stylized circular Antarctica ice sheet silhouette -->
+<svg class="w-4/5 h-4/5 text-[#5B8BA8] select-none" fill="currentColor" viewbox="0 0 200 200">
+<path d="M100,50 C125,48 145,55 160,75 C175,95 170,125 155,145 C140,165 110,170 85,165 C60,160 40,140 38,115 C35,90 50,65 75,55 Z" fill="#5B8BA8" opacity="0.4"></path>
+<path d="M98,62 C118,60 135,66 148,82 C160,98 155,120 142,136 C130,152 105,155 85,150 C65,145 50,130 48,110 C46,90 58,72 78,65 Z" fill="#FFFFFF" opacity="0.9"></path>
+<circle cx="100" cy="108" fill="#0F2436" r="2"></circle>
+</svg>
+<!-- Station 1: Maitri Pin -->
+<div class="absolute top-[32%] left-[43%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<span class="w-3.5 h-3.5 rounded-full bg-[#E4572E] border-2 border-white shadow"></span>
+</div>
+<div class="absolute left-4 top-1/2 -translate-y-1/2 hidden group-hover:flex flex-col bg-[#FFFFFF] border border-[#D3DEE6] rounded-[6px] px-2.5 py-1 text-[11px] whitespace-nowrap z-20 text-[#0F2436]">
+<span class="font-bold">Maitri</span>
+<span class="font-code text-[10px] text-[#0F2436]/70">70.77°S, 11.73°E</span>
+</div>
+<span class="absolute -bottom-3.5 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-[#EEF3F6] tracking-wide bg-[#0F2436] px-1 rounded">Maitri</span>
+</div>
+<!-- Station 2: Bharati Pin -->
+<div class="absolute top-[48%] right-[22%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<span class="w-3.5 h-3.5 rounded-full bg-[#E4572E] border-2 border-white shadow"></span>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 hidden group-hover:flex flex-col bg-[#FFFFFF] border border-[#D3DEE6] rounded-[6px] px-2.5 py-1 text-[11px] whitespace-nowrap z-20 text-[#0F2436]">
+<span class="font-bold">Bharati</span>
+<span class="font-code text-[10px] text-[#0F2436]/70">69.41°S, 76.19°E</span>
+</div>
+<span class="absolute -bottom-3.5 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-[#EEF3F6] tracking-wide bg-[#0F2436] px-1 rounded">Bharati</span>
+</div>
+<!-- Outer Track Ring: 45 Radial Tick Marks around Map Perimeter -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 340 340">
+<circle cx="170" cy="170" fill="none" opacity="0.45" r="162" stroke="#5B8BA8" stroke-dasharray="2 20.9" stroke-width="1"></circle>
+<!-- 45th expedition tick highlighted in orange -->
+<circle cx="318" cy="170" fill="#E4572E" r="4"></circle>
+</svg>
+</div>
+</div>
+<!-- Bottom Footer of Map Card -->
+<div class="pt-3 flex items-center justify-between text-xs border-t border-[#5B8BA8]/30">
+<div>
+<span class="text-[#5B8BA8] block text-[11px]">Indian Antarctic Program</span>
+<span class="font-code text-[#EEF3F6] font-semibold">1981 — 2026</span>
+</div>
+<div class="flex items-center gap-1.5 bg-[#FFFFFF]/10 border border-[#5B8BA8]/40 px-2.5 py-1 rounded-[6px]">
+<span class="w-2 h-2 rounded-full bg-[#E4572E]"></span>
+<span class="text-xs font-semibold text-[#EEF3F6]">45th expedition, underway</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Row of Three Plain Facts (White background, rounded-[12px], border 1px #D3DEE6, p-6) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Fact 1 -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] p-6 flex flex-col justify-center">
+<span class="font-heading text-4xl lg:text-5xl font-semibold text-[#0F2436] tracking-tight">44</span>
+<h2 class="text-base font-semibold text-[#5B8BA8] mt-1 font-body">expeditions archived</h2>
+<p class="mt-2 text-sm text-[#0F2436]/75 leading-relaxed">
+          44 annual scientific expeditions digitized from 1981 to present with environmental logs and reports.
+        </p>
+</div>
+<!-- Fact 2 -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] p-6 flex flex-col justify-center">
+<span class="font-heading text-4xl lg:text-5xl font-semibold text-[#0F2436] tracking-tight">36</span>
+<h2 class="text-base font-semibold text-[#5B8BA8] mt-1 font-body">languages</h2>
+<p class="mt-2 text-sm text-[#0F2436]/75 leading-relaxed">
+          Direct querying and synthesis in classical and modern Indian languages via national AI models.
+        </p>
+</div>
+<!-- Fact 3 -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] p-6 flex flex-col justify-center">
+<span class="font-heading text-4xl lg:text-5xl font-semibold text-[#0F2436] tracking-tight">100%</span>
+<h2 class="text-base font-semibold text-[#5B8BA8] mt-1 font-body">every answer cited</h2>
+<p class="mt-2 text-sm text-[#0F2436]/75 leading-relaxed">
+          Strict provenance linking answers to verified NCPOR logs, physical registries, and journals.
+        </p>
+</div>
+</section>
+<!-- 5. Section: Latest from the ice -->
+<section class="space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-heading text-3xl font-semibold text-[#0F2436] tracking-tight">
+            Latest from the ice
+          </h2>
+<p class="text-sm text-[#0F2436]/70 mt-1">
+            Field notes and scientific dispatches from Indian stations.
+          </p>
+</div>
+<a class="text-xs font-semibold text-[#0F2436] hover:text-[#5B8BA8] inline-flex items-center gap-1 transition-colors" href="#archive">
+<span>Browse all dispatches</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Three Cards (White bg, rounded-[12px], border 1px #D3DEE6, overflow-hidden) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Story 1: Ecology Dispatch (IMAGE_5) -->
+<article class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] overflow-hidden flex flex-col justify-between hover:border-[#5B8BA8] transition-colors">
+<div>
+<div class="w-full h-52 overflow-hidden bg-[#EEF3F6] relative">
+<img alt="Penguins near Maitri station" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wjb-KKxiF9M49EjIjPJnKLoCfMlTTRsPRRqDeW5CCddG-Ar9y0sr6BhwD-ejKvxPx07V0O4wpHWrzSEGuOW7VF5btFI_nd-j4jH0aQOI623SiY2KEyIDeOaJZ67zvCBVAkhpuaMk2epCa3geeo22m2Zo5Xc1JPST669PKHg7DX2Q4Fni8SSVvQk-npiGgkLI8VU9jZSls_UzLl1uI-HOeINKSP3YMP6VzyYf614kjTpsIEkhi9gUdTAVs"/>
+<div class="absolute top-3 left-3 bg-[#0F2436] text-white text-[11px] font-code px-2 py-0.5 rounded-[6px]">
+                Maitri station
+              </div>
+</div>
+<div class="p-5 space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#0F2436]/70 font-medium">Ecology dispatch</span>
+<span class="font-code text-xs text-[#E4572E] font-medium">[NCPOR-BIO-2026]</span>
+</div>
+<h3 class="font-heading text-lg font-semibold text-[#0F2436] leading-snug">
+                Adelie and Emperor penguin census completed across Schirmacher Oasis
+              </h3>
+<p class="text-xs text-[#0F2436]/70 leading-relaxed">
+                Bi-annual population survey indicates localized colony stability despite regional sea-ice shifts recorded during the 44th Indian expedition cycle.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0 border-t border-[#D3DEE6] mt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 text-[11px] text-[#0F2436]/80 font-medium bg-[#EEF3F6] px-2 py-1 rounded-[6px]">
+<span class="material-symbols-outlined text-xs text-[#5B8BA8]">translate</span>
+<span>36 languages</span>
+</span>
+<a class="text-xs font-semibold text-[#0F2436] hover:text-[#5B8BA8] inline-flex items-center gap-0.5" href="#read-log-1">
+              Read log →
+            </a>
+</div>
+</article>
+<!-- Story 2: Polar Engineering (IMAGE_6) -->
+<article class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] overflow-hidden flex flex-col justify-between hover:border-[#5B8BA8] transition-colors">
+<div>
+<div class="w-full h-52 overflow-hidden bg-[#EEF3F6] relative">
+<img alt="Bharati Antarctic station" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WrwyBI79CBWbwcxhbbCls_yFdSgdp13jAn7VG7cTHXetcMC6FQkZZmqVyBim1z7KdHqcrSvTdoi5aHciSVw_GTjZgNSFg_xQSiLKSNCheAj7fhp9j2NdGBpRM_iX6con71UPdm1mk-IZbxIK8FYBRVTa3Ayclq9mG7sBF2-QSRCixBwupZM301_WtbJFN_giJ7Pq1iUF4qw0S0NhIRRPC--xmKpqf_Wn9S03bMR4cyptVa64Q5H0JYKdPc"/>
+<div class="absolute top-3 left-3 bg-[#0F2436] text-white text-[11px] font-code px-2 py-0.5 rounded-[6px]">
+                Bharati station
+              </div>
+</div>
+<div class="p-5 space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#0F2436]/70 font-medium">Polar engineering</span>
+<span class="font-code text-xs text-[#E4572E] font-medium">[NCPOR-ENG-2026]</span>
+</div>
+<h3 class="font-heading text-lg font-semibold text-[#0F2436] leading-snug">
+                Structural thermal efficiency assessment of Bharati's modular container architecture
+              </h3>
+<p class="text-xs text-[#0F2436]/70 leading-relaxed">
+                Engineers publish multi-year envelope telemetry evaluating high-wind aerodynamics and heat retention across the modular intermodal units.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0 border-t border-[#D3DEE6] mt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 text-[11px] text-[#0F2436]/80 font-medium bg-[#EEF3F6] px-2 py-1 rounded-[6px]">
+<span class="material-symbols-outlined text-xs text-[#5B8BA8]">translate</span>
+<span>36 languages</span>
+</span>
+<a class="text-xs font-semibold text-[#0F2436] hover:text-[#5B8BA8] inline-flex items-center gap-0.5" href="#read-log-2">
+              Read log →
+            </a>
+</div>
+</article>
+<!-- Story 3: Oceanography (IMAGE_4) -->
+<article class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] overflow-hidden flex flex-col justify-between hover:border-[#5B8BA8] transition-colors">
+<div>
+<div class="w-full h-52 overflow-hidden bg-[#EEF3F6] relative">
+<img alt="RV Sagar Nidhi icebreaker ship" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X_v5gNovLWTuEInU2mJbeG2FoSVLRWp6cJDcssOItD2LZ3TAyklCueznVDMECc-sn6hhLX6ZSqFmvf9LHZRrGoph_AWQhIjW2Pz3T620MZQIFI5XGDRFFSHuhIyv1Dnjl1vuOK0DYyx-12rTEV31MKJl3SZEa6B2n_FPq1xfwskoRFWs0uhaTOCdq4xn0SpPUN6-5HIF7jm-eeqmO0W90V7Vrg3MO7J5vm67v-f6BY_ey2sHajYqfk15pQ"/>
+<div class="absolute top-3 left-3 bg-[#0F2436] text-white text-[11px] font-code px-2 py-0.5 rounded-[6px]">
+                Southern Ocean
+              </div>
+</div>
+<div class="p-5 space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#0F2436]/70 font-medium">Oceanography</span>
+<span class="font-code text-xs text-[#E4572E] font-medium">[NCPOR-OCE-2026]</span>
+</div>
+<h3 class="font-heading text-lg font-semibold text-[#0F2436] leading-snug">
+                RV Sagar Nidhi completes deep sea conductivity and salinity transect in Southern Ocean
+              </h3>
+<p class="text-xs text-[#0F2436]/70 leading-relaxed">
+                High-latitude hydrographic profiles down to 4,200m depth reveal key data regarding the Antarctic Circumpolar Current velocity and cold melt mixing.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0 border-t border-[#D3DEE6] mt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 text-[11px] text-[#0F2436]/80 font-medium bg-[#EEF3F6] px-2 py-1 rounded-[6px]">
+<span class="material-symbols-outlined text-xs text-[#5B8BA8]">translate</span>
+<span>36 languages</span>
+</span>
+<a class="text-xs font-semibold text-[#0F2436] hover:text-[#5B8BA8] inline-flex items-center gap-0.5" href="#read-log-3">
+              Read log →
+            </a>
+</div>
+</article>
+</div>
+</section>
+<!-- 6. Section: Explore the stations -->
+<section class="space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-heading text-3xl font-semibold text-[#0F2436] tracking-tight">
+            Explore the stations
+          </h2>
+<p class="text-sm text-[#0F2436]/70 mt-1">
+            India's active year-round research outposts in polar realms.
+          </p>
+</div>
+<div class="flex items-center gap-2 text-xs font-medium text-[#0F2436]/70">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+<span>All 3 stations operational and transmitting telemetry</span>
+</div>
+</div>
+<!-- Three Station Cards (White bg, rounded-[12px], border 1px #D3DEE6, p-6) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Station 1: Maitri -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] p-6 flex flex-col justify-between hover:border-[#5B8BA8] transition-colors">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-[6px] text-[11px] font-semibold bg-[#EEF3F6] text-[#0F2436]">Antarctica</span>
+<span class="font-code text-xs text-[#0F2436]/60">Est. 1989</span>
+</div>
+<div>
+<h3 class="font-heading text-2xl font-semibold text-[#0F2436]">Maitri</h3>
+<p class="text-xs text-[#0F2436]/70 mt-1">Schirmacher Oasis, Queen Maud Land</p>
+</div>
+<div class="bg-[#EEF3F6] p-3 rounded-[6px] space-y-1.5 text-xs">
+<div class="flex justify-between">
+<span class="text-[#0F2436]/70">Coordinates:</span>
+<span class="font-code font-medium text-[#0F2436]">70.77°S, 11.73°E</span>
+</div>
+<div class="flex justify-between">
+<span class="text-[#0F2436]/70">Primary focus:</span>
+<span class="font-medium text-[#0F2436]">Geology, Meteorology</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-[#D3DEE6] flex items-center justify-between">
+<span class="text-xs text-emerald-700 font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Live telemetry
+            </span>
+<button class="px-3 py-1.5 border border-[#D3DEE6] hover:border-[#5B8BA8] rounded-[6px] text-xs font-medium text-[#0F2436] flex items-center gap-1 bg-[#FFFFFF] transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-[#E4572E]">location_on</span>
+<span>View on map</span>
+</button>
+</div>
+</div>
+<!-- Station 2: Bharati -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] p-6 flex flex-col justify-between hover:border-[#5B8BA8] transition-colors">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-[6px] text-[11px] font-semibold bg-[#EEF3F6] text-[#0F2436]">Antarctica</span>
+<span class="font-code text-xs text-[#0F2436]/60">Est. 2012</span>
+</div>
+<div>
+<h3 class="font-heading text-2xl font-semibold text-[#0F2436]">Bharati</h3>
+<p class="text-xs text-[#0F2436]/70 mt-1">Larsemann Hills, East Antarctica</p>
+</div>
+<div class="bg-[#EEF3F6] p-3 rounded-[6px] space-y-1.5 text-xs">
+<div class="flex justify-between">
+<span class="text-[#0F2436]/70">Coordinates:</span>
+<span class="font-code font-medium text-[#0F2436]">69.41°S, 76.19°E</span>
+</div>
+<div class="flex justify-between">
+<span class="text-[#0F2436]/70">Primary focus:</span>
+<span class="font-medium text-[#0F2436]">Oceanography, Satellite telemetry</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-[#D3DEE6] flex items-center justify-between">
+<span class="text-xs text-emerald-700 font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Live telemetry
+            </span>
+<button class="px-3 py-1.5 border border-[#D3DEE6] hover:border-[#5B8BA8] rounded-[6px] text-xs font-medium text-[#0F2436] flex items-center gap-1 bg-[#FFFFFF] transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-[#E4572E]">location_on</span>
+<span>View on map</span>
+</button>
+</div>
+</div>
+<!-- Station 3: Himadri -->
+<div class="bg-[#FFFFFF] border border-[#D3DEE6] rounded-[12px] p-6 flex flex-col justify-between hover:border-[#5B8BA8] transition-colors">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-[6px] text-[11px] font-semibold bg-[#EEF3F6] text-[#0F2436]">Arctic</span>
+<span class="font-code text-xs text-[#0F2436]/60">Est. 2008</span>
+</div>
+<div>
+<h3 class="font-heading text-2xl font-semibold text-[#0F2436]">Himadri</h3>
+<p class="text-xs text-[#0F2436]/70 mt-1">Ny-Ålesund, Svalbard, Norway</p>
+</div>
+<div class="bg-[#EEF3F6] p-3 rounded-[6px] space-y-1.5 text-xs">
+<div class="flex justify-between">
+<span class="text-[#0F2436]/70">Coordinates:</span>
+<span class="font-code font-medium text-[#0F2436]">78.92°N, 11.93°E</span>
+</div>
+<div class="flex justify-between">
+<span class="text-[#0F2436]/70">Primary focus:</span>
+<span class="font-medium text-[#0F2436]">Fjord marine research, Aerosol optics</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-[#D3DEE6] flex items-center justify-between">
+<span class="text-xs text-emerald-700 font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Live telemetry
+            </span>
+<button class="px-3 py-1.5 border border-[#D3DEE6] hover:border-[#5B8BA8] rounded-[6px] text-xs font-medium text-[#0F2436] flex items-center gap-1 bg-[#FFFFFF] transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-[#E4572E]">location_on</span>
+<span>View on map</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 7. Footer (Solid Polar-Night Ink Background #0F2436, Text #EEF3F6) -->
+<footer class="w-full bg-[#0F2436] text-[#EEF3F6] border-t border-[#D3DEE6] py-12 px-6 mt-12">
+<div class="max-w-[1360px] mx-auto space-y-8">
+<!-- Top info tier -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-[#5B8BA8]/30">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-heading text-xl font-bold text-[#EEF3F6]">HIMVANI</span>
+<span class="text-xs text-[#5B8BA8]">|</span>
+<span class="text-xs text-[#EEF3F6]/90">Polar knowledge portal</span>
+</div>
+<p class="text-xs text-[#EEF3F6]/70 mt-1 max-w-xl">
+            National Centre for Polar and Ocean Research, Ministry of Earth Sciences, Government of India.
+          </p>
+</div>
+<!-- Links (Help, Feedback, Accessibility statement, Privacy, Terms, Sitemap) -->
+<nav class="flex flex-wrap items-center gap-5 text-xs text-[#EEF3F6]/80 font-medium">
+<a class="hover:text-white transition-colors" href="#help">Help</a>
+<a class="hover:text-white transition-colors" href="#feedback">Feedback</a>
+<a class="hover:text-white transition-colors" href="#accessibility">Accessibility statement</a>
+<a class="hover:text-white transition-colors" href="#privacy">Privacy</a>
+<a class="hover:text-white transition-colors" href="#terms">Terms</a>
+<a class="hover:text-white transition-colors" href="#sitemap">Sitemap</a>
+</nav>
+</div>
+<!-- Bottom metadata & Copyright -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#EEF3F6]/70">
+<p>
+          © 2026 National Centre for Polar and Ocean Research (NCPOR), Ministry of Earth Sciences. All rights reserved.
+        </p>
+<div class="flex items-center gap-4">
+<span class="font-code text-xs text-[#5B8BA8]">Last updated 30 Sep 2026</span>
+<div class="bg-[#FFFFFF]/10 px-3 py-1 rounded-[6px] border border-[#5B8BA8]/30 text-[#EEF3F6] font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E4572E]"></span>
+<span>A Smart India Hackathon 2026 concept by Team Claude Can Code</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
